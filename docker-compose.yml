@@ -7,15 +7,3 @@ services:
     ports:
       - "8000:8000"
     restart: always
-
-  nginx:
-    image: nginx:latest
-    container_name: nginx-proxy
-    ports:
-      - "8080:80"
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - /var/log/cb.log:/var/log/cb.log
-    depends_on:
-      - cricbuzz-app
-    restart: always
