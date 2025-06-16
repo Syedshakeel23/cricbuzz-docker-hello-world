@@ -1,6 +1,11 @@
-FROM ghcr.io/vincetse/scratch
-LABEL maintainer "Vince Tse <vincetse@users.noreply.github.com>"
-COPY ./hello_world .
-ENV GIN_MODE release
-EXPOSE 8080
-ENTRYPOINT ["/hello_world"]
+FROM python:3.9-slim
+
+WORKDIR /app
+
+COPY app.py .
+
+RUN pip install flask
+
+EXPOSE 8000
+
+CMD ["python", "app.py"]
